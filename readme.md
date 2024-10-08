@@ -1,0 +1,1 @@
+Full Stack Next.js App with Google Calendar - TypeScript, Drizzle, ShaCN, TailwindCSS

@@ -43,16 +43,16 @@ export function EventForm() {
                 <FormField
                 control={form.control}
                 name="name"
-                render={({field}) => (
+                render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Event Name</FormLabel>
-                        <FormControl>
-                            <Input {...field} />
-                        </FormControl>
-                        <FormDescription>
-                            The name users will see when booking
-                        </FormDescription>
-                        <FormMessage/>
+                    <FormLabel>Event Name</FormLabel>
+                    <FormControl>
+                        <Input {...field} />
+                    </FormControl>
+                    <FormDescription>
+                        The name users will see when booking
+                    </FormDescription>
+                    <FormMessage />
                     </FormItem>
                 )}
                 />

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { db } from "@/drizzle/db";
 import { formatEventDescription } from "@/lib/formatters";
+import { cn } from "@/lib/utils";
 import { auth, redirectToSignIn } from "@clerk/nextjs/server";
 import { CalendarPlus, CalendarRange } from "lucide-react";
 import Link from "next/link";
@@ -57,17 +58,26 @@ type EventCardProps = {
 }
 
 function EventCard({
-    id, description, name, durationInMinutes, clerkUserId }: EventCardProps) {
-    return <Card>
-        <CardHeader>
+    id, isActive, description, name, durationInMinutes, clerkUserId }: EventCardProps) {
+    return <Card className={cn("flex flex-col", !isActive && "border-secondary/")}>
+        <CardHeader className={cn(!isActive && "opacity-50")}>
             <CardTitle>{name}</CardTitle>
             <CardDescription>{formatEventDescription(durationInMinutes)}</CardDescription>
         </CardHeader>
         {description != null && (
-            <CardContent>{description}</CardContent>
+            <CardContent className={cn(!isActive && "opacity-50")}>
+                {description}
+            </CardContent>
         )}
         <CardFooter className="flex justify-end gap-2 mt-auto">
-            <CopyEventButton variant="outline" eventId={id} clerkUserId={clerkUserId} />
+
+            {isActive && (
+                <CopyEventButton 
+                    variant="outline" 
+                    eventId={id} 
+                    clerkUserId={clerkUserId} 
+                />
+            )}
             <Button asChild>
                 <Link href={`/events/${id}/edit`}>Edit</Link>
             </Button>

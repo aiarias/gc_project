@@ -6,7 +6,7 @@ export default function NewEventPage() {
     return (
         <Card className="max-w-md mx-auto">
             <CardHeader>
-                <CardTitle>NewEvent</CardTitle>
+                <CardTitle>New Event</CardTitle>
             </CardHeader>
             <CardContent>
                 <EventForm />

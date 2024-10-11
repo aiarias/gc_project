@@ -8,6 +8,9 @@ import { auth, redirectToSignIn } from "@clerk/nextjs/server";
 import { CalendarPlus, CalendarRange } from "lucide-react";
 import Link from "next/link";
 
+
+export const revalidate = 0
+
 export default async function EventsPage() {
     const { userId } = auth()
 
